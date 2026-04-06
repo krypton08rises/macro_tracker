@@ -1,0 +1,162 @@
+{
+  "theme": "India Macro Tracker",
+  "mailer_path": "/usr/sbin/sendmail",
+  "max_items_per_feed": 6,
+
+  "feeds": [
+    { "name": "Economic Times Markets", "url": "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms" },
+    { "name": "Moneycontrol Economy",   "url": "https://www.moneycontrol.com/rss/economy.xml" },
+    { "name": "LiveMint Economy",       "url": "https://www.livemint.com/rss/economy" },
+    { "name": "Business Standard",      "url": "https://www.business-standard.com/rss/markets-106.rss" },
+    { "name": "Reuters Business",       "url": "https://feeds.reuters.com/reuters/businessNews" },
+    { "name": "CNBC World",             "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html" },
+    { "name": "CNBC Economy",           "url": "https://www.cnbc.com/id/20910258/device/rss/rss.html" },
+    { "name": "MarketWatch",            "url": "https://feeds.content.dowjones.io/public/rss/mw_topstories" },
+    { "name": "Yahoo Finance",          "url": "https://finance.yahoo.com/rss/topstories" },
+    { "name": "WSJ Markets",            "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml" },
+    { "name": "FT Markets",             "url": "https://www.ft.com/markets?format=rss" },
+    { "name": "Bloomberg Markets",      "url": "https://feeds.bloomberg.com/markets/news.rss" },
+    { "name": "Guardian Business",      "url": "https://www.theguardian.com/business/rss" },
+    { "name": "Al Jazeera",             "url": "https://www.aljazeera.com/xml/rss/all.xml" },
+    { "name": "DW World",               "url": "https://rss.dw.com/rdf/rss-en-all" }
+  ],
+
+  "filter_keywords": [
+    "india", "nifty", "sensex", "bse", "nse", "rbi", "rupee", "inr", "sebi",
+    "fed", "federal reserve", "fomc", "powell", "rate hike", "rate cut", "interest rate",
+    "inflation", "cpi", "pce", "gdp", "recession",
+    "china", "taiwan", "russia", "ukraine", "iran", "middle east",
+    "war", "sanction", "tariff", "trade war", "conflict",
+    "crude", "oil", "brent", "wti", "opec", "gold", "silver", "copper",
+    "dollar", "dxy", "yen", "euro",
+    "imf", "world bank", "g7", "g20",
+    "bond", "yield", "treasury", "deficit", "fiscal",
+    "earnings", "crash", "rally", "bull", "bear", "market"
+  ],
+
+  "urgent_keywords": [
+    "crash", "circuit breaker", "flash crash",
+    "war", "attack", "bomb", "strike", "missile",
+    "surprise hike", "emergency rate",
+    "default", "collapse", "contagion",
+    "recession", "stagflation",
+    "rbi emergency", "sebi halt"
+  ],
+
+  "signals": [
+    {
+      "id":           "risk_off",
+      "label":        "RISK-OFF / BEARISH FOR INDIA",
+      "header_color": "#ff6b6b",
+      "border_color": "#c0392b",
+      "tag_bg":       "#7a1212",
+      "tag_fg":       "#ffaaaa",
+      "tag_label":    "RISK-OFF",
+      "keywords":     ["crash", "war", "attack", "sanction", "default", "recession", "rate hike", "hawkish", "taper", "collapse", "rout", "tumble", "plunge", "selloff"]
+    },
+    {
+      "id":           "risk_on",
+      "label":        "RISK-ON / BULLISH FOR INDIA",
+      "header_color": "#6bffb8",
+      "border_color": "#27ae60",
+      "tag_bg":       "#124a2a",
+      "tag_fg":       "#aaffcc",
+      "tag_label":    "RISK-ON",
+      "keywords":     ["rate cut", "dovish", "stimulus", "rally", "bull", "recovery", "ceasefire", "deal", "peace", "ease", "pause", "pivot", "surge", "gain"]
+    },
+    {
+      "id":           "commodity",
+      "label":        "COMMODITY SIGNALS",
+      "header_color": "#ffcc44",
+      "border_color": "#d4ac0d",
+      "tag_bg":       "#3a3212",
+      "tag_fg":       "#ffe099",
+      "tag_label":    "COMMODITY",
+      "keywords":     ["crude", "oil", "brent", "wti", "opec", "gold", "silver", "copper", "commodity", "barrel"]
+    },
+    {
+      "id":           "macro_india",
+      "label":        "INDIA MACRO",
+      "header_color": "#5b9bd5",
+      "border_color": "#1a6fa8",
+      "tag_bg":       "#0d2a40",
+      "tag_fg":       "#aad4f5",
+      "tag_label":    "INDIA",
+      "keywords":     ["india", "nifty", "sensex", "rbi", "rupee", "sebi", "bse", "nse", "inr", "modi"]
+    }
+  ],
+
+  "markets": [
+    {
+      "id":            "nifty",
+      "label":         "Nifty 50",
+      "ticker":        "^nsei",
+      "yahoo_ticker":  "^NSEI",
+      "decimals":      2,
+      "primary":       true,
+      "cache_minutes": 15,
+      "note_up":       "Nifty rising — risk-on",
+      "note_down":     "Nifty falling — risk-off / selling pressure"
+    },
+    {
+      "id":            "sensex",
+      "label":         "Sensex",
+      "ticker":        "^bsesn",
+      "yahoo_ticker":  "^BSESN",
+      "decimals":      2,
+      "cache_minutes": 15
+    },
+    {
+      "id":            "usdinr",
+      "label":         "USD / INR",
+      "ticker":        "usdinr",
+      "yahoo_ticker":  "USDINR=X",
+      "decimals":      4,
+      "cache_minutes": 15
+    },
+    {
+      "id":            "brent",
+      "label":         "Brent Crude",
+      "ticker":        "bz.f",
+      "yahoo_ticker":  "BZ=F",
+      "prefix":        "$",
+      "decimals":      2,
+      "cache_minutes": 30,
+      "note_up":       "Rising crude = higher import bill, CAD pressure on rupee",
+      "note_down":     "Falling crude = macro relief for India"
+    },
+    {
+      "id":            "gold",
+      "label":         "Gold (XAU/USD)",
+      "ticker":        "gc.f",
+      "yahoo_ticker":  "GC=F",
+      "prefix":        "$",
+      "decimals":      2,
+      "cache_minutes": 30
+    },
+    {
+      "id":            "dxy",
+      "label":         "DXY (Dollar Index)",
+      "ticker":        "dxy",
+      "yahoo_ticker":  "DX-Y.NYB",
+      "decimals":      3,
+      "cache_minutes": 30
+    },
+    {
+      "id":            "spx",
+      "label":         "S&P 500",
+      "ticker":        "^spx",
+      "yahoo_ticker":  "^GSPC",
+      "decimals":      2,
+      "cache_minutes": 60
+    }
+  ],
+
+  "key_levels": [
+    { "label": "Nifty support",           "value": "Update weekly",  "color": "#ddd" },
+    { "label": "Nifty resistance",        "value": "Update weekly",  "color": "#ddd" },
+    { "label": "Brent — CAD risk zone",   "value": "> $90",          "color": "#e74c3c" },
+    { "label": "USD/INR — RBI watch",     "value": "> 85.00",        "color": "#e74c3c" },
+    { "label": "DXY — EM headwind zone",  "value": "> 105",          "color": "#e74c3c" }
+  ]
+}

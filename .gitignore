@@ -1,0 +1,5 @@
+.*_state.json
+.iran_tracker_state.json
+*.log
+__pycache__/
+*.pyc
